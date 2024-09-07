@@ -31,7 +31,7 @@ export default function Home() {
       images: [
         {
           src: "/3dshirt.mp4",
-          cartSrc: "/shirt/basictwogirlsfront.png",
+          cartSrc: "/3dshirtsquare.mp4",
           cart: "doppelgänger shirt",
           variants: [
             "49283577282899",

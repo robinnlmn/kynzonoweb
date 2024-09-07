@@ -258,10 +258,14 @@ export default function Home() {
   }
 
   useLayoutEffect(() => {
-    var video = document.querySelector("video");
-    if (!video) return;
-    video.muted = true;
-    video.play();
+    try {
+      var video = document.querySelector("video");
+      if (!video) return;
+      video.muted = true;
+      video.play();
+    } catch (e) {
+      console.error(e);
+    }
   }, []);
 
   function calculateCartPrice() {

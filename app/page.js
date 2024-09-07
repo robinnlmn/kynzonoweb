@@ -828,160 +828,59 @@ export default function Home() {
 
         <div className={styles.sliderWrapper}>
           <div className={styles.slider}>
-            {window.location.search.charAt(0) === "?" ? (
-              window.location.search.substring(1) === "0" ? (
-                <>
-                  {" "}
-                  <video
-                    autoPlay={true}
-                    muted={true}
-                    loop={true}
-                    playsInline
-                    style={{ outline: "none" }}
-                    controls={false}
-                  >
-                    <source
-                      // id={`slide-${index}`}
-                      src="/3dhoodie.mp4"
-                      // alt={`Slide ${index}`}
-                      style={{ outline: "none", zIndex: 0 }}
-                    />
-                  </video>
-                  <video
-                    autoPlay={true}
-                    muted={true}
-                    loop={true}
-                    style={{ outline: "none" }}
-                    playsInline
-                    controls={false}
-                  >
-                    <source
-                      // id={`slide-${index}`}
-                      src="/3dhoodie.mp4"
-                      // alt={`Slide ${index}`}
-                      style={{ outline: "none" }}
-                    />
-                  </video>
-                  <div
-                    style={{
-                      backgroundColor: "transparent",
-                      opacity: 0.5,
-                      width: "80%",
-                      height: "55%",
-                      top: "50%",
-                      left: "50%",
-                      transform: "translate(-50%, -50%)",
-                      position: "absolute",
-                    }}
-                    onClick={() => {
-                      setCurrentAddToCart(currentCollection);
-                      setIsAddToCartOpen(true);
-                    }}
-                  ></div>
-                </>
-              ) : window.location.search.substring(1) === "1" ? (
-                <>
-                  {" "}
-                  <video
-                    autoPlay={true}
-                    muted={true}
-                    loop={true}
-                    playsInline
-                    style={{ outline: "none" }}
-                    controls={false}
-                  >
-                    <source
-                      // id={`slide-${index}`}
-                      src="/3dshirt.mp4"
-                      // alt={`Slide ${index}`}
-                      style={{ outline: "none", zIndex: 0 }}
-                    />
-                  </video>
-                  <video
-                    autoPlay={true}
-                    muted={true}
-                    loop={true}
-                    style={{ outline: "none" }}
-                    playsInline
-                    controls={false}
-                  >
-                    <source
-                      // id={`slide-${index}`}
-                      src="/3dshirt.mp4"
-                      // alt={`Slide ${index}`}
-                      style={{ outline: "none" }}
-                    />
-                  </video>
-                  <div
-                    style={{
-                      backgroundColor: "transparent",
-                      opacity: 0.5,
-                      width: "80%",
-                      height: "55%",
-                      top: "50%",
-                      left: "50%",
-                      transform: "translate(-50%, -50%)",
-                      position: "absolute",
-                    }}
-                    onClick={() => {
-                      setCurrentAddToCart(currentCollection);
-                      setIsAddToCartOpen(true);
-                    }}
-                  ></div>
-                </>
-              ) : (
-                <>
-                  <video
-                    autoPlay={true}
-                    muted={true}
-                    loop={true}
-                    playsInline
-                    style={{ outline: "none" }}
-                    controls={false}
-                  >
-                    <source
-                      // id={`slide-${index}`}
-                      src={videoUrl}
-                      // alt={`Slide ${index}`}
-                      style={{ outline: "none", zIndex: 0 }}
-                    />
-                  </video>
-                  <video
-                    autoPlay={true}
-                    muted={true}
-                    loop={true}
-                    style={{ outline: "none" }}
-                    playsInline
-                    controls={false}
-                  >
-                    <source
-                      // id={`slide-${index}`}
-                      src={videoUrl}
-                      // alt={`Slide ${index}`}
-                      style={{ outline: "none" }}
-                    />
-                  </video>
-                  <div
-                    style={{
-                      backgroundColor: "transparent",
-                      opacity: 0.5,
-                      width: "80%",
-                      height: "55%",
-                      top: "50%",
-                      left: "50%",
-                      transform: "translate(-50%, -50%)",
-                      position: "absolute",
-                    }}
-                    onClick={() => {
-                      setCurrentAddToCart(0);
-                      setIsAddToCartOpen(true);
-                    }}
-                  ></div>
-                </>
-              )
-            ) : (
+            {currentCollection == 0 && (
               <>
-                {" "}
+                <video
+                  autoPlay={true}
+                  muted={true}
+                  loop={true}
+                  playsInline
+                  style={{ outline: "none" }}
+                  controls={false}
+                >
+                  <source
+                    // id={`slide-${index}`}
+                    src="/3dhoodie.mp4"
+                    // alt={`Slide ${index}`}
+                    style={{ outline: "none", zIndex: 0 }}
+                  />
+                </video>
+                <video
+                  autoPlay={true}
+                  muted={true}
+                  loop={true}
+                  style={{ outline: "none" }}
+                  playsInline
+                  controls={false}
+                >
+                  <source
+                    // id={`slide-${index}`}
+                    src="/3dhoodie.mp4"
+                    // alt={`Slide ${index}`}
+                    style={{ outline: "none" }}
+                  />
+                </video>
+                <div
+                  style={{
+                    backgroundColor: "transparent",
+                    opacity: 0.5,
+                    width: "80%",
+                    height: "55%",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    position: "absolute",
+                  }}
+                  onClick={() => {
+                    setCurrentAddToCart(currentCollection);
+                    setIsAddToCartOpen(true);
+                  }}
+                ></div>
+              </>
+            )}
+
+            {currentCollection == 1 && (
+              <>
                 <video
                   autoPlay={true}
                   muted={true}

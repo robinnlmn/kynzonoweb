@@ -1,3 +1,3 @@
-# kynzono
+# kynzono.com
 
 clothing brand

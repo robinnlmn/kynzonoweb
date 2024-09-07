@@ -21,7 +21,7 @@ export default function Home() {
             "47629165134163",
             "47629165166931",
           ],
-          price: 59.95,
+          price: 49.95,
         },
       ],
     },
@@ -51,13 +51,13 @@ export default function Home() {
   const [isCartOpen, setisCartOpen] = useState(false);
   const [isAddToCartOpen, setIsAddToCartOpen] = useState(false);
   const [alreadyOpened, setAlreadyOpened] = useState(false);
-  const [currentAddToCart, setCurrentAddToCart] = useState("");
+  const [currentAddToCart, setCurrentAddToCart] = useState(0);
   const [currentCart, setCurrentCart] = useState([]);
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
   const [productInformationOpen, setProductInformationOpen] = useState(false);
   const [earlyCode, setEarlyCode] = useState("");
 
-  const router = useRouter();
+  const videoUrl = images[currentCollection].images[0].src;
 
   useEffect(() => {
     // const timer = setTimeout(() => {
@@ -72,6 +72,8 @@ export default function Home() {
 
     if (value) {
       setCurrentCollection(parseInt(value));
+    } else {
+      setCurrentCollection(1);
     }
   }, []);
 
@@ -154,11 +156,10 @@ export default function Home() {
     if (select.value == "XL") variant = 4;
 
     newItem.size = select.value;
-    newItem.name = images[currentCollection].images[currentAddToCart].cart;
-    newItem.img = images[currentCollection].images[currentAddToCart].cartSrc;
-    newItem.link =
-      images[currentCollection].images[currentAddToCart].variants[variant];
-    newItem.price = images[currentCollection].images[currentAddToCart].price;
+    newItem.name = images[currentCollection].images[0].cart;
+    newItem.img = images[currentCollection].images[0].cartSrc;
+    newItem.link = images[currentCollection].images[0].variants[variant];
+    newItem.price = images[currentCollection].images[0].price;
 
     console.log(newItem);
 
@@ -298,6 +299,7 @@ export default function Home() {
                 onClick={() => {
                   burgerMenuClicked();
                   setCurrentCollection(0);
+                  window.location = "/?0";
                 }}
                 className={styles.detailsp}
               >
@@ -643,56 +645,11 @@ export default function Home() {
           </>
         ) : (
           <>
-            <table>
-              <tr>
-                <th>&nbsp;SIZE</th>
-                <th>LENGTH&nbsp;</th>
-                <th>CHEST</th>
-                <th>SLEEVE</th>
-                {/* <th>Unit</th> */}
-              </tr>
-              <tr>
-                <td>XS</td>
-                <td>64</td>
-                <td>58</td>
-                <td>57</td>
-                {/* <td>cm</td> */}
-              </tr>
-              <tr>
-                <td>S&nbsp;</td>
-                <td>66&nbsp;</td>
-                <td>61&nbsp;</td>
-                <td>59&nbsp;</td>
-                {/* <td>cm</td> */}
-              </tr>
-              <tr>
-                <td>M&nbsp;</td>
-                <td>68&nbsp;</td>
-                <td>64&nbsp;</td>
-                <td>61&nbsp;</td>
-                {/* <td>cm</td> */}
-              </tr>
-              <tr>
-                <td>L</td>
-                <td>70</td>
-                <td>67</td>
-                <td>63</td>
-                {/* <td>cm</td> */}
-              </tr>
-              <tr>
-                <td>XL</td>
-                <td>72</td>
-                <td>70</td>
-                <td>65</td>
-                {/* <td>cm</td> */}
-              </tr>
-            </table>
-            <br></br>
             <p className={styles.productInfo}>
-              <p>100% french terry cotton</p>
-              <p>cropped boxy fit</p>
-              <p>made in china</p>
-              <p>450 g/m&#178;</p>
+              <p>designed in germany</p>
+              <p>made in portugal</p>
+              <p>100% cotton</p>
+              <p>250 g/m&#178;</p>
             </p>{" "}
           </>
         )}
@@ -714,9 +671,7 @@ export default function Home() {
             ) : (
               <>
                 <strong style={{ marginBottom: 10 }}>
-                  <p>
-                    {images[currentCollection].images[currentAddToCart].cart}
-                  </p>
+                  <p>{images[currentCollection].images[0].cart}</p>
                 </strong>
                 <select id="sizeSelect">
                   <option value="" disabled selected>
@@ -873,21 +828,172 @@ export default function Home() {
 
         <div className={styles.sliderWrapper}>
           <div className={styles.slider}>
-            {images[currentCollection].images.map((image, index) => (
+            {window.location.search.charAt(0) === "?" ? (
+              window.location.search.substring(1) === "0" ? (
+                <>
+                  {" "}
+                  <video
+                    autoPlay={true}
+                    muted={true}
+                    loop={true}
+                    playsInline
+                    style={{ outline: "none" }}
+                    controls={false}
+                  >
+                    <source
+                      // id={`slide-${index}`}
+                      src="/3dhoodie.mp4"
+                      // alt={`Slide ${index}`}
+                      style={{ outline: "none", zIndex: 0 }}
+                    />
+                  </video>
+                  <video
+                    autoPlay={true}
+                    muted={true}
+                    loop={true}
+                    style={{ outline: "none" }}
+                    playsInline
+                    controls={false}
+                  >
+                    <source
+                      // id={`slide-${index}`}
+                      src="/3dhoodie.mp4"
+                      // alt={`Slide ${index}`}
+                      style={{ outline: "none" }}
+                    />
+                  </video>
+                  <div
+                    style={{
+                      backgroundColor: "transparent",
+                      opacity: 0.5,
+                      width: "80%",
+                      height: "55%",
+                      top: "50%",
+                      left: "50%",
+                      transform: "translate(-50%, -50%)",
+                      position: "absolute",
+                    }}
+                    onClick={() => {
+                      setCurrentAddToCart(currentCollection);
+                      setIsAddToCartOpen(true);
+                    }}
+                  ></div>
+                </>
+              ) : window.location.search.substring(1) === "1" ? (
+                <>
+                  {" "}
+                  <video
+                    autoPlay={true}
+                    muted={true}
+                    loop={true}
+                    playsInline
+                    style={{ outline: "none" }}
+                    controls={false}
+                  >
+                    <source
+                      // id={`slide-${index}`}
+                      src="/3dshirt.mp4"
+                      // alt={`Slide ${index}`}
+                      style={{ outline: "none", zIndex: 0 }}
+                    />
+                  </video>
+                  <video
+                    autoPlay={true}
+                    muted={true}
+                    loop={true}
+                    style={{ outline: "none" }}
+                    playsInline
+                    controls={false}
+                  >
+                    <source
+                      // id={`slide-${index}`}
+                      src="/3dshirt.mp4"
+                      // alt={`Slide ${index}`}
+                      style={{ outline: "none" }}
+                    />
+                  </video>
+                  <div
+                    style={{
+                      backgroundColor: "transparent",
+                      opacity: 0.5,
+                      width: "80%",
+                      height: "55%",
+                      top: "50%",
+                      left: "50%",
+                      transform: "translate(-50%, -50%)",
+                      position: "absolute",
+                    }}
+                    onClick={() => {
+                      setCurrentAddToCart(currentCollection);
+                      setIsAddToCartOpen(true);
+                    }}
+                  ></div>
+                </>
+              ) : (
+                <>
+                  <video
+                    autoPlay={true}
+                    muted={true}
+                    loop={true}
+                    playsInline
+                    style={{ outline: "none" }}
+                    controls={false}
+                  >
+                    <source
+                      // id={`slide-${index}`}
+                      src={videoUrl}
+                      // alt={`Slide ${index}`}
+                      style={{ outline: "none", zIndex: 0 }}
+                    />
+                  </video>
+                  <video
+                    autoPlay={true}
+                    muted={true}
+                    loop={true}
+                    style={{ outline: "none" }}
+                    playsInline
+                    controls={false}
+                  >
+                    <source
+                      // id={`slide-${index}`}
+                      src={videoUrl}
+                      // alt={`Slide ${index}`}
+                      style={{ outline: "none" }}
+                    />
+                  </video>
+                  <div
+                    style={{
+                      backgroundColor: "transparent",
+                      opacity: 0.5,
+                      width: "80%",
+                      height: "55%",
+                      top: "50%",
+                      left: "50%",
+                      transform: "translate(-50%, -50%)",
+                      position: "absolute",
+                    }}
+                    onClick={() => {
+                      setCurrentAddToCart(0);
+                      setIsAddToCartOpen(true);
+                    }}
+                  ></div>
+                </>
+              )
+            ) : (
               <>
+                {" "}
                 <video
                   autoPlay={true}
                   muted={true}
                   loop={true}
-                  key={index}
                   playsInline
                   style={{ outline: "none" }}
                   controls={false}
                 >
                   <source
-                    id={`slide-${index}`}
-                    src={image.src}
-                    alt={`Slide ${index}`}
+                    // id={`slide-${index}`}
+                    src="/3dshirt.mp4"
+                    // alt={`Slide ${index}`}
                     style={{ outline: "none", zIndex: 0 }}
                   />
                 </video>
@@ -895,15 +1001,14 @@ export default function Home() {
                   autoPlay={true}
                   muted={true}
                   loop={true}
-                  key={index}
                   style={{ outline: "none" }}
                   playsInline
                   controls={false}
                 >
                   <source
-                    id={`slide-${index}`}
-                    src={image.src}
-                    alt={`Slide ${index}`}
+                    // id={`slide-${index}`}
+                    src="/3dshirt.mp4"
+                    // alt={`Slide ${index}`}
                     style={{ outline: "none" }}
                   />
                 </video>
@@ -919,13 +1024,12 @@ export default function Home() {
                     position: "absolute",
                   }}
                   onClick={() => {
-                    setCurrentAddToCart(index);
+                    setCurrentAddToCart(currentCollection);
                     setIsAddToCartOpen(true);
                   }}
-                  key={index}
                 ></div>
               </>
-            ))}
+            )}
           </div>
           <p
             style={{

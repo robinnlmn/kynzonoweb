@@ -14,7 +14,7 @@ export default function Gallery() {
     {
       img: "/mockup.png",
       hoverImg: "/mockup.png",
-      price: 59.95,
+      price: 49.95,
       name: "paramount hoodie",
       link: "/",
     },

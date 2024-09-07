@@ -1,0 +1,48 @@
+::root {
+  --menuContainerPercent: 85%;
+  --backgroundColor: black;
+  --accentColor: white;
+}
+
+* {
+  font-family: arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 20px;
+}
+
+*:focus {
+  outline: none;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 10px;
+}
+
+th {
+  padding: 8px;
+  padding-bottom: 0;
+}
+
+td {
+  padding: 8px;
+  text-align: center;
+}
+
+tr:not(:last-child) td {
+  border-bottom: 1px solid black;
+}
+
+footer {
+  /* border-top: 1px solid gray; */
+  /* height: 75px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}

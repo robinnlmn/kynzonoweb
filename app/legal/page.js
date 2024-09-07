@@ -112,7 +112,7 @@ export default function Legal() {
           <strong>TERMS</strong>
           <br></br>
           <br></br>
-          <p>Last updated: 01/02/2024</p>
+          <p>Last updated: 01/09/2024</p>
           <p>
             This website is operated by kynzono. Throughout the site, the terms
             “we”, “us” and “our” refer to kynzono. kynzono offers this website,
@@ -591,7 +591,7 @@ export default function Legal() {
           <strong>PRIVACY</strong>
           <br></br>
           <br></br>
-          <p>Last updated: 01/02/2024</p>
+          <p>Last updated: 01/09/2024</p>
           <p>
             This Privacy Policy describes how kynzono (the &quot;Site&quot;,
             &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) collects, uses,
@@ -950,7 +950,7 @@ export default function Legal() {
           <strong>RETURNS</strong>
           <br></br>
           <br></br>
-          <p>Last updated: 01/02/2024</p>
+          <p>Last updated: 01/09/2024</p>
           <p>
             We have a 14-day return policy, which means you have 14 days after
             receiving your item to request a return. To be eligible for a

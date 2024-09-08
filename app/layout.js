@@ -22,31 +22,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        {isInstagramBrowser ? (
-          <div style={{ textAlign: "center", padding: "20px" }}>
-            <p>This page is best viewed in your browser.</p>
-            <a
-              href="https://www.kynzono.com"
-              target="_blank"
-              style={{
-                display: "inline-block",
-                padding: "10px 20px",
-                backgroundColor: "#0070f3",
-                color: "#ffffff",
-                borderRadius: "5px",
-                textDecoration: "none",
-                marginTop: "20px",
-              }}
-            >
-              Open in Browser
-            </a>
-          </div>
-        ) : (
-          <>
-            {children}
-            <Analytics />
-          </>
-        )}
+        {children}
+        <Analytics />
       </body>
     </html>
   );

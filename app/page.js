@@ -752,7 +752,7 @@ export default function Home() {
             <span className={styles.burgerSpan3}></span>
           </div>
           <p onClick={() => (window.location = "/")}>kynzono</p>
-          <p
+          <div
             className={`${styles.cart} ${isCartOpen ? styles.cartSvgOpen : ""}`}
             id="cart"
             onClick={() => {
@@ -803,7 +803,7 @@ export default function Home() {
               <span className={styles.cartx1}></span>
               <span className={styles.cartx2}></span>
             </div>
-          </p>
+          </div>
         </div>
         {currentCollection == 2 ? (
           <div className={styles.comingSoon}>

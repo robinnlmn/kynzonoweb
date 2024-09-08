@@ -78,7 +78,7 @@ export default function Home() {
   }, []);
 
   function calculateTimeLeft() {
-    const difference = +new Date("2024-09-08T18:00:00") - +new Date();
+    const difference = +new Date("2024-07-08T18:00:00") - +new Date();
     // const difference = +new Date("2024-03-14T15:09:30") - +new Date();
     let timeLeft = {};
 

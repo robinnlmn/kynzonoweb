@@ -444,21 +444,16 @@ export default function Home() {
                   className={styles.cartItemContainer}
                   id={`cartItem-${index}`}
                 >
-                  {/* <img src={item.img} width={82} height={82} /> */}
-                  {item.name == "paramount hoodie" ? (
-                    <video
-                      width={82}
-                      height={82}
-                      autoPlay={true}
-                      muted={true}
-                      loop={true}
-                      playsInline
-                    >
-                      <source src={item.img} />
-                    </video>
-                  ) : (
-                    <img src={item.img} width={82} height={82} />
-                  )}
+                  <video
+                    width={82}
+                    height={82}
+                    autoPlay={true}
+                    muted={true}
+                    loop={true}
+                    playsInline
+                  >
+                    <source src={item.img} />
+                  </video>
 
                   <div>
                     <p>{item.name}</p>

@@ -65,4 +65,3 @@ export default function GalleryItem({
     </div>
   );
 }
-80;

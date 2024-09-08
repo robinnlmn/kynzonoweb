@@ -257,14 +257,14 @@ export default function Home() {
   }
 
   useLayoutEffect(() => {
-    try {
-      var video = document.querySelector("video");
-      if (!video) return;
-      video.muted = true;
-      video.play();
-    } catch (e) {
-      console.error(e);
-    }
+    // try {
+    //   var video = document.querySelector("video");
+    //   if (!video) return;
+    //   video.muted = true;
+    //   video.play();
+    // } catch (e) {
+    //   console.error(e);
+    // }
   }, []);
 
   function calculateCartPrice() {

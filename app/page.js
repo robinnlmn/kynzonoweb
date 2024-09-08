@@ -60,20 +60,19 @@ export default function Home() {
   const videoUrl = images[currentCollection].images[0].src;
 
   useEffect(() => {
-    // const timer = setTimeout(() => {
-    //   setTimeLeft(calculateTimeLeft());
-    // }, 1000);
-    // return () => clearTimeout(timer);
+    try {
+      let value = window.location.search;
+      if (value.charAt(0) === "?") {
+        value = value.substring(1);
+      }
 
-    let value = window.location.search;
-    if (value.charAt(0) === "?") {
-      value = value.substring(1);
-    }
-
-    if (value) {
-      setCurrentCollection(parseInt(value));
-    } else {
-      setCurrentCollection(1);
+      if (value) {
+        setCurrentCollection(parseInt(value));
+      } else {
+        setCurrentCollection(1);
+      }
+    } catch (e) {
+      console.error(e);
     }
   }, []);
 

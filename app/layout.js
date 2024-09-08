@@ -27,6 +27,7 @@ export default function RootLayout({ children }) {
             <p>This page is best viewed in your browser.</p>
             <a
               href="https://www.kynzono.com"
+              target="_blank"
               style={{
                 display: "inline-block",
                 padding: "10px 20px",

@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
           <div style={{ textAlign: "center", padding: "20px" }}>
             <p>This page is best viewed in your browser.</p>
             <a
-              href={window.location.href}
+              href="https://www.kynzono.com"
               style={{
                 display: "inline-block",
                 padding: "10px 20px",

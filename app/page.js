@@ -12,7 +12,7 @@ export default function Home() {
       images: [
         {
           src: "/3dhoodie.mp4",
-          cartSrc: "/3dhoodiesquare.mp4",
+          cartSrc: "/mockup.png",
           cart: "paramount hoodie",
           variants: [
             "47629165035859",
@@ -21,7 +21,7 @@ export default function Home() {
             "47629165134163",
             "47629165166931",
           ],
-          price: 49.95,
+          price: 44.99,
         },
       ],
     },
@@ -31,7 +31,7 @@ export default function Home() {
       images: [
         {
           src: "/3dshirt.mp4",
-          cartSrc: "/3dshirtsquare.mp4",
+          cartSrc: "/shirt/basictwogirlsfront.png",
           cart: "doppelgänger shirt",
           variants: [
             "49283577282899",
@@ -40,12 +40,12 @@ export default function Home() {
             "49283577381203",
             "49283577413971",
           ],
-          price: 29.95,
+          price: 24.99,
         },
       ],
     },
   ]);
-  const [currentCollection, setCurrentCollection] = useState(0);
+  const [currentCollection, setCurrentCollection] = useState(100);
   const [isClicked, setIsClicked] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCartOpen, setisCartOpen] = useState(false);
@@ -56,8 +56,7 @@ export default function Home() {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
   const [productInformationOpen, setProductInformationOpen] = useState(false);
   const [earlyCode, setEarlyCode] = useState("");
-
-  const videoUrl = images[currentCollection].images[0].src;
+  const [selectedSize, setSelectedSize] = useState("");
 
   useEffect(() => {
     try {
@@ -69,7 +68,7 @@ export default function Home() {
       if (value) {
         setCurrentCollection(parseInt(value));
       } else {
-        setCurrentCollection(1);
+        setCurrentCollection(100);
       }
     } catch (e) {
       console.error(e);
@@ -135,10 +134,9 @@ export default function Home() {
 
   function handleAddToCart() {
     if (currentCart.length >= 5) return;
-    const select = document.getElementById("sizeSelect");
     var variant;
 
-    if (select.value == "") return;
+    if (selectedSize == "") return;
 
     const newItem = {
       img: "",
@@ -148,13 +146,13 @@ export default function Home() {
       price: 0,
     };
 
-    if (select.value == "XS") variant = 0;
-    if (select.value == "S") variant = 1;
-    if (select.value == "M") variant = 2;
-    if (select.value == "L") variant = 3;
-    if (select.value == "XL") variant = 4;
+    if (selectedSize == "XS") variant = 0;
+    if (selectedSize == "S") variant = 1;
+    if (selectedSize == "M") variant = 2;
+    if (selectedSize == "L") variant = 3;
+    if (selectedSize == "XL") variant = 4;
 
-    newItem.size = select.value;
+    newItem.size = selectedSize;
     newItem.name = images[currentCollection].images[0].cart;
     newItem.img = images[currentCollection].images[0].cartSrc;
     newItem.link = images[currentCollection].images[0].variants[variant];
@@ -379,7 +377,7 @@ export default function Home() {
               ></path>
             </svg>
           </a>
-          <a href="https://www.youtube.com/@kynzono" className={styles.social}>
+          {/* <a href="https://www.youtube.com/@kynzono" className={styles.social}>
             <svg
               height="64px"
               width="64px"
@@ -427,7 +425,7 @@ export default function Home() {
                 <path d="M16.021 1.004c-0 0-0.001 0-0.002 0-8.273 0-14.979 6.706-14.979 14.979 0 6.308 3.899 11.705 9.419 13.913l0.101 0.036c-0.087-0.595-0.137-1.281-0.137-1.979 0-0.819 0.068-1.622 0.2-2.403l-0.012 0.084c0.274-1.171 1.757-7.444 1.757-7.444-0.284-0.636-0.449-1.379-0.449-2.16 0-0.023 0-0.046 0-0.069l-0 0.004c0-2.078 1.208-3.638 2.709-3.638 0.008-0 0.018-0 0.028-0 1.040 0 1.883 0.843 1.883 1.883 0 0.080-0.005 0.159-0.015 0.236l0.001-0.009c-0.307 1.903-0.738 3.583-1.304 5.199l0.064-0.21c-0.042 0.161-0.067 0.345-0.067 0.535 0 1.2 0.973 2.173 2.173 2.173 0.039 0 0.078-0.001 0.117-0.003l-0.005 0c2.659 0 4.709-2.805 4.709-6.857 0.002-0.054 0.003-0.118 0.003-0.182 0-3.265-2.647-5.913-5.913-5.913-0.123 0-0.244 0.004-0.365 0.011l0.017-0.001c-0.083-0.004-0.18-0.006-0.277-0.006-3.58 0-6.482 2.902-6.482 6.482 0 0.007 0 0.014 0 0.022v-0.001c0 0 0 0.001 0 0.001 0 1.287 0.417 2.476 1.122 3.441l-0.011-0.016c0.076 0.081 0.122 0.191 0.122 0.311 0 0.043-0.006 0.084-0.017 0.123l0.001-0.003c-0.112 0.469-0.366 1.498-0.417 1.703-0.066 0.281-0.215 0.339-0.501 0.206-1.843-1.214-3.043-3.274-3.043-5.614 0-0.068 0.001-0.135 0.003-0.202l-0 0.010c0-4.719 3.434-9.062 9.897-9.062 0.132-0.007 0.287-0.011 0.442-0.011 4.811 0 8.72 3.862 8.795 8.655l0 0.007c0 5.167-3.258 9.325-7.789 9.325-0.039 0.001-0.086 0.002-0.132 0.002-1.366 0-2.573-0.677-3.306-1.713l-0.008-0.013-0.936 3.559c-0.488 1.499-1.123 2.8-1.91 3.992l0.038-0.061c1.325 0.425 2.85 0.671 4.432 0.671 8.274 0 14.981-6.707 14.981-14.981 0-8.272-6.705-14.978-14.977-14.981h-0z"></path>{" "}
               </g>
             </svg>
-          </a>
+          </a> */}
         </div>
       </div>
       <div
@@ -444,7 +442,7 @@ export default function Home() {
                   className={styles.cartItemContainer}
                   id={`cartItem-${index}`}
                 >
-                  <video
+                  {/* <video
                     width={82}
                     height={82}
                     autoPlay={true}
@@ -453,7 +451,8 @@ export default function Home() {
                     playsInline
                   >
                     <source src={item.img} />
-                  </video>
+                  </video> */}
+                  <img src={item.img} width={82} height={82} />
 
                   <div>
                     <p>{item.name}</p>
@@ -570,7 +569,7 @@ export default function Home() {
             left: 0,
             width: "100%",
             height: "calc(100vh - 50px)",
-            backgroundColor: "black",
+            backgroundColor: "transparent",
             opacity: 0.5,
             zIndex: 10,
           }}
@@ -579,6 +578,7 @@ export default function Home() {
               setProductInformationOpen(false);
             } else {
               setIsAddToCartOpen(false);
+              setSelectedSize("");
             }
           }}
         ></div>
@@ -652,7 +652,7 @@ export default function Home() {
           </>
         )}
       </div>
-      {isAddToCartOpen ? (
+      {/* {isAddToCartOpen ? (
         <div
           className={styles.addToCart}
           style={{
@@ -692,37 +692,11 @@ export default function Home() {
                 </a>
               </>
             )}
-
-            {/* <p
-              className={styles.addToCartClose}
-              onClick={() => setIsAddToCartOpen(false)}
-            >
-              <svg
-                viewBox="0 0 1024 1024"
-                width="18px"
-                height="18px"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="#000000"
-              >
-                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                <g
-                  id="SVGRepo_tracerCarrier"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                ></g>
-                <g id="SVGRepo_iconCarrier">
-                  <path
-                    fill="#000000"
-                    d="M195.2 195.2a64 64 0 0 1 90.496 0L512 421.504 738.304 195.2a64 64 0 0 1 90.496 90.496L602.496 512 828.8 738.304a64 64 0 0 1-90.496 90.496L512 602.496 285.696 828.8a64 64 0 0 1-90.496-90.496L421.504 512 195.2 285.696a64 64 0 0 1 0-90.496z"
-                  ></path>
-                </g>
-              </svg>
-            </p> */}
           </div>
         </div>
       ) : (
         <></>
-      )}
+      )} */}
       {/* <button
         id="shopNowButton"
         className={`${styles.openButton} ${isClicked ? styles.clicked : ""}`}
@@ -745,7 +719,7 @@ export default function Home() {
             <span className={styles.burgerSpan2}></span>
             <span className={styles.burgerSpan3}></span>
           </div>
-          <p onClick={() => (window.location = "/")}>kynzono</p>
+          {/* <p onClick={() => (window.location = "/")}>kynzono</p> */}
           <div
             className={`${styles.cart} ${isCartOpen ? styles.cartSvgOpen : ""}`}
             id="cart"
@@ -825,110 +799,115 @@ export default function Home() {
         ) : null}
 
         <div className={styles.sliderWrapper}>
-          <div className={styles.slider}>
-            {currentCollection == 0 && (
-              <>
-                <video
-                  autoPlay={true}
-                  muted={true}
-                  loop={true}
-                  playsInline
-                  style={{ outline: "none" }}
-                  controls={false}
-                >
-                  <source
-                    // id={`slide-${index}`}
-                    src="/3dhoodie.mp4"
-                    // alt={`Slide ${index}`}
-                    style={{ outline: "none", zIndex: 0 }}
-                  />
-                </video>
-                <video
-                  autoPlay={true}
-                  muted={true}
-                  loop={true}
-                  style={{ outline: "none" }}
-                  playsInline
-                  controls={false}
-                >
-                  <source
-                    // id={`slide-${index}`}
-                    src="/3dhoodie.mp4"
-                    // alt={`Slide ${index}`}
+          {currentCollection !== 100 ? (
+            <div className={styles.slider}>
+              {currentCollection == 0 && (
+                <>
+                  <video
+                    autoPlay={true}
+                    muted={true}
+                    loop={true}
+                    playsInline
                     style={{ outline: "none" }}
-                  />
-                </video>
-                <div
-                  style={{
-                    backgroundColor: "transparent",
-                    opacity: 0.5,
-                    width: "80%",
-                    height: "55%",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    position: "absolute",
-                  }}
-                  onClick={() => {
-                    setCurrentAddToCart(currentCollection);
-                    setIsAddToCartOpen(true);
-                  }}
-                ></div>
-              </>
-            )}
+                    controls={false}
+                  >
+                    <source
+                      // id={`slide-${index}`}
+                      src="/3dhoodie1.mp4"
+                      // alt={`Slide ${index}`}
+                      style={{ outline: "none", zIndex: 0 }}
+                    />
+                  </video>
+                  <video
+                    autoPlay={true}
+                    muted={true}
+                    loop={true}
+                    style={{ outline: "none" }}
+                    playsInline
+                    controls={false}
+                  >
+                    <source
+                      // id={`slide-${index}`}
+                      src="/3dhoodie1.mp4"
+                      // alt={`Slide ${index}`}
+                      style={{ outline: "none" }}
+                    />
+                  </video>
+                  <div
+                    style={{
+                      backgroundColor: "transparent",
+                      opacity: 0.5,
+                      width: "80%",
+                      height: "55%",
+                      top: "50%",
+                      left: "50%",
+                      transform: "translate(-50%, -50%)",
+                      position: "absolute",
+                    }}
+                    onClick={() => {
+                      setCurrentAddToCart(currentCollection);
+                      setIsAddToCartOpen(true);
+                    }}
+                  ></div>
+                </>
+              )}
 
-            {currentCollection == 1 && (
-              <>
-                <video
-                  autoPlay={true}
-                  muted={true}
-                  loop={true}
-                  playsInline
-                  style={{ outline: "none" }}
-                  controls={false}
-                >
-                  <source
-                    // id={`slide-${index}`}
-                    src="/3dshirt.mp4"
-                    // alt={`Slide ${index}`}
-                    style={{ outline: "none", zIndex: 0 }}
-                  />
-                </video>
-                <video
-                  autoPlay={true}
-                  muted={true}
-                  loop={true}
-                  style={{ outline: "none" }}
-                  playsInline
-                  controls={false}
-                >
-                  <source
-                    // id={`slide-${index}`}
-                    src="/3dshirt.mp4"
-                    // alt={`Slide ${index}`}
+              {currentCollection == 1 && (
+                <>
+                  <video
+                    autoPlay={true}
+                    muted={true}
+                    loop={true}
+                    playsInline
                     style={{ outline: "none" }}
-                  />
-                </video>
-                <div
-                  style={{
-                    backgroundColor: "transparent",
-                    opacity: 0.5,
-                    width: "80%",
-                    height: "55%",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    position: "absolute",
-                  }}
-                  onClick={() => {
-                    setCurrentAddToCart(currentCollection);
-                    setIsAddToCartOpen(true);
-                  }}
-                ></div>
-              </>
-            )}
-          </div>
-          <p
+                    controls={false}
+                  >
+                    <source
+                      // id={`slide-${index}`}
+                      src="/3dshirt.mp4"
+                      // alt={`Slide ${index}`}
+                      style={{ outline: "none", zIndex: 0 }}
+                    />
+                  </video>
+                  <video
+                    autoPlay={true}
+                    muted={true}
+                    loop={true}
+                    style={{ outline: "none" }}
+                    playsInline
+                    controls={false}
+                  >
+                    <source
+                      // id={`slide-${index}`}
+                      src="/3dshirt.mp4"
+                      // alt={`Slide ${index}`}
+                      style={{ outline: "none" }}
+                    />
+                  </video>
+                  <div
+                    style={{
+                      backgroundColor: "transparent",
+                      opacity: 0.5,
+                      width: "80%",
+                      height: "55%",
+                      top: "50%",
+                      left: "50%",
+                      transform: "translate(-50%, -50%)",
+                      position: "absolute",
+                    }}
+                    onClick={() => {
+                      setCurrentAddToCart(currentCollection);
+                      setIsAddToCartOpen(true);
+                    }}
+                  ></div>
+                </>
+              )}
+            </div>
+          ) : (
+            <p></p>
+          )}
+
+          {/* <p
             style={{
               position: "absolute",
               top: "50%",
@@ -938,7 +917,150 @@ export default function Home() {
             }}
           >
             loading...
-          </p>
+          </p> */}
+        </div>
+
+        {isAddToCartOpen && (
+          <div className={styles.addToCartSelect}>
+            <div
+              onClick={() => setSelectedSize("XL")}
+              className={
+                selectedSize == "XL" ? styles.selectedSize : styles.selectSize
+              }
+            >
+              XL
+            </div>
+            <div
+              onClick={() => setSelectedSize("L")}
+              className={
+                selectedSize == "L" ? styles.selectedSize : styles.selectSize
+              }
+            >
+              L
+            </div>
+            <div
+              onClick={() => setSelectedSize("M")}
+              className={
+                selectedSize == "M" ? styles.selectedSize : styles.selectSize
+              }
+            >
+              M
+            </div>
+            <div
+              onClick={() => setSelectedSize("S")}
+              className={
+                selectedSize == "S" ? styles.selectedSize : styles.selectSize
+              }
+            >
+              S
+            </div>
+            <div
+              onClick={() => setSelectedSize("XS")}
+              className={
+                selectedSize == "XS" ? styles.selectedSize : styles.selectSize
+              }
+            >
+              XS
+            </div>
+          </div>
+        )}
+
+        {isAddToCartOpen && (
+          <button
+            className={styles.addToCartButton}
+            disabled={!selectedSize}
+            onClick={() => handleAddToCart()}
+          >
+            {selectedSize ? "confirm" : "select size"}
+          </button>
+        )}
+
+        {currentCollection !== 100 && (
+          <div
+            style={{
+              backgroundColor: "transparent",
+              bottom: "15px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              position: "absolute",
+            }}
+          >
+            {currentCollection == 1 ? (
+              <div className={styles.bottomSelect}>
+                <img
+                  src="/mockup.png"
+                  height="74"
+                  width="74"
+                  onClick={() => setCurrentCollection(0)}
+                />
+                <button
+                  onClick={() => setIsAddToCartOpen(true)}
+                  className={styles.buyButtonBottom}
+                >
+                  add to cart
+                </button>
+              </div>
+            ) : (
+              <div className={styles.bottomSelect}>
+                <img
+                  src="/shirt/basictwogirlsfront.png"
+                  height="74"
+                  width="74"
+                  onClick={() => setCurrentCollection(1)}
+                />
+                <button
+                  onClick={() =>
+                    setIsAddToCartOpen(isAddToCartOpen ? false : true)
+                  }
+                  className={styles.buyButtonBottom}
+                >
+                  add to cart
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+        {currentCollection == 100 && (
+          <div
+            style={{
+              backgroundColor: "transparent",
+              bottom: "15px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              position: "absolute",
+              width: 175,
+              display: "flex",
+              justifyContent: "space-between",
+              zIndex: 3,
+            }}
+          >
+            <img
+              src="/mockup.png"
+              height="74"
+              width="74"
+              onClick={() => setCurrentCollection(0)}
+            />
+            <img
+              src="/shirt/basictwogirlsfront.png"
+              height="74"
+              width="74"
+              onClick={() => setCurrentCollection(1)}
+            />
+          </div>
+        )}
+
+        <div
+          onClick={() => {
+            if (currentCollection == 100) return;
+            setCurrentCollection(100);
+            setIsAddToCartOpen(false);
+            setSelectedSize("");
+          }}
+          className={
+            currentCollection == 100 ? styles.title100 : styles.titleNormal
+          }
+        >
+          <p>kynzono</p>
         </div>
       </section>
     </main>

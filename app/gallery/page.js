@@ -14,7 +14,7 @@ export default function Gallery() {
     {
       img: "/mockup.png",
       hoverImg: "/mockup.png",
-      price: 49.95,
+      price: 44.99,
       name: "paramount hoodie",
       link: "/",
     },
@@ -22,7 +22,7 @@ export default function Gallery() {
     {
       img: "/shirt/basictwogirlsfront.png",
       hoverImg: "/shirt/basictwogirlsback.png",
-      price: 29.95,
+      price: 24.99,
       name: "doppelgänger shirt",
       link: "/",
     },

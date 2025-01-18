@@ -60,6 +60,32 @@
   height: 33px;
 }
 
+.title100 {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  font-weight: 700;
+  font-size: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 1000ms;
+  z-index: -100;
+}
+
+.titleNormal {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  font-weight: 700;
+  font-size: 20px;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: 1000ms;
+  z-index: 1;
+}
+
 .burgerMenu {
   width: fit-content;
   height: 15px;
@@ -171,6 +197,7 @@
   width: 100%;
   scroll-snap-align: start;
   object-fit: cover;
+  /* z-index: 1; */
 }
 
 .sliderNav {
@@ -323,9 +350,11 @@
   display: flex;
   justify-content: space-evenly;
   flex-direction: row;
-  width: 100%;
+  width: 70%;
+  transform: translateX(-50%);
   position: absolute;
-  bottom: 15px;
+  left: 50%;
+  bottom: 25px;
   /* left: 42.5%; */
 }
 
@@ -556,10 +585,85 @@
   font-weight: bold;
 }
 
+.buyButtonBottom {
+  background-color: #307cf6;
+  border: none;
+  border-radius: 10px;
+  margin-top: 4px;
+  padding: 12.5px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  width: 100px;
+}
+
+.bottomSelect {
+  display: flex;
+  align-items: center;
+  width: 200px;
+  justify-content: space-between;
+}
+
 .addToCartClose {
   position: absolute;
   top: -15px;
   left: -15px;
+}
+
+.addToCartSelect {
+  position: absolute;
+  bottom: 51px;
+  border-radius: 10px 10px 0 0;
+  left: calc(50% + 50px);
+  transform: translateX(-50%);
+  background-color: white;
+  height: 200px;
+  width: 98px;
+  display: flex;
+  flex-direction: column;
+  z-index: 11;
+
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+}
+
+.addToCartButton {
+  position: absolute;
+  bottom: 30px;
+  left: calc(50% + 50px);
+  transform: translateX(-50%);
+  z-index: 15;
+
+  background-color: #307cf6;
+  border: none;
+  border-radius: 10px;
+  margin-top: 4px;
+  padding: 12.5px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 0 12px rgba(48, 124, 246, 0.2);
+  width: 100px;
+}
+
+.addToCartButton:disabled {
+  background-color: gray;
+}
+
+.selectSize {
+  height: 18%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.selectedSize {
+  height: 18%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(48, 124, 246, 0.3);
+  border-radius: 10px;
+  /* box-sizing: border-box; */
 }
 
 .cartItemContainer {
@@ -589,6 +693,7 @@
 
 .cartItemContainer img {
   border-radius: 10px;
+  margin-left: 10px;
 }
 
 .cartItemRemove {

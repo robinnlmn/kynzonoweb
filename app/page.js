@@ -57,6 +57,7 @@ export default function Home() {
   const [productInformationOpen, setProductInformationOpen] = useState(false);
   const [earlyCode, setEarlyCode] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
+  const [addToCartAction, setAddToCartAction] = useState(false);
 
   useEffect(() => {
     try {
@@ -164,7 +165,7 @@ export default function Home() {
 
     setCurrentCart((prevCart) => [...prevCart, newItem]);
 
-    setIsAddToCartOpen(false);
+    handleAfterAddToCart();
 
     const animationOptions = {
       elementId: "cart",
@@ -181,6 +182,15 @@ export default function Home() {
 
   function handleLocalstorage(newItem) {
     localStorage.setItem("cart", JSON.stringify([...currentCart, newItem]));
+  }
+
+  function handleAfterAddToCart() {
+    setAddToCartAction(true);
+
+    setTimeout(() => {
+      setAddToCartAction(false);
+      setIsAddToCartOpen(false);
+    }, 500);
   }
 
   useEffect(() => {
@@ -922,50 +932,57 @@ export default function Home() {
           </p> */}
         </div>
 
-        {isAddToCartOpen && (
-          <div className={styles.addToCartSelect}>
-            <div
-              onClick={() => setSelectedSize("XL")}
-              className={
-                selectedSize == "XL" ? styles.selectedSize : styles.selectSize
-              }
-            >
-              XL
-            </div>
-            <div
-              onClick={() => setSelectedSize("L")}
-              className={
-                selectedSize == "L" ? styles.selectedSize : styles.selectSize
-              }
-            >
-              L
-            </div>
-            <div
-              onClick={() => setSelectedSize("M")}
-              className={
-                selectedSize == "M" ? styles.selectedSize : styles.selectSize
-              }
-            >
-              M
-            </div>
-            <div
-              onClick={() => setSelectedSize("S")}
-              className={
-                selectedSize == "S" ? styles.selectedSize : styles.selectSize
-              }
-            >
-              S
-            </div>
-            <div
-              onClick={() => setSelectedSize("XS")}
-              className={
-                selectedSize == "XS" ? styles.selectedSize : styles.selectSize
-              }
-            >
-              XS
-            </div>
+        <div
+          className={`${styles.addToCartSelect} ${
+            isAddToCartOpen ? styles.open : ""
+          }`}
+        >
+          <div
+            onClick={() => setSelectedSize("XL")}
+            className={
+              selectedSize === "XL" ? styles.selectedSize : styles.selectSize
+            }
+            style={{ zIndex: isAddToCartOpen ? 11 : -1 }}
+          >
+            XL
           </div>
-        )}
+          <div
+            onClick={() => setSelectedSize("L")}
+            className={
+              selectedSize === "L" ? styles.selectedSize : styles.selectSize
+            }
+            style={{ zIndex: isAddToCartOpen ? 11 : -1 }}
+          >
+            L
+          </div>
+          <div
+            onClick={() => setSelectedSize("M")}
+            className={
+              selectedSize === "M" ? styles.selectedSize : styles.selectSize
+            }
+            style={{ zIndex: isAddToCartOpen ? 11 : -1 }}
+          >
+            M
+          </div>
+          <div
+            onClick={() => setSelectedSize("S")}
+            className={
+              selectedSize === "S" ? styles.selectedSize : styles.selectSize
+            }
+            style={{ zIndex: isAddToCartOpen ? 11 : -1 }}
+          >
+            S
+          </div>
+          <div
+            onClick={() => setSelectedSize("XS")}
+            className={
+              selectedSize === "XS" ? styles.selectedSize : styles.selectSize
+            }
+            style={{ zIndex: isAddToCartOpen ? 11 : -1 }}
+          >
+            XS
+          </div>
+        </div>
 
         {isAddToCartOpen && (
           <button
@@ -973,7 +990,60 @@ export default function Home() {
             disabled={!selectedSize}
             onClick={() => handleAddToCart()}
           >
-            {selectedSize ? "confirm" : "select size"}
+            {selectedSize ? (
+              addToCartAction ? (
+                <svg
+                  width="20px"
+                  height="20px"
+                  viewBox="0 0 24.00 24.00"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className={styles.svgConfirm}
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    {" "}
+                    <path
+                      d="M5 14L9 17L18 6"
+                      stroke="#33363F"
+                      stroke-width="2"
+                    ></path>{" "}
+                  </g>
+                </svg>
+              ) : (
+                <svg
+                  width="20px"
+                  height="20px"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className={styles.svgConfirm}
+                >
+                  <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      d="M6.29977 5H21L19 12H7.37671M20 16H8L6 3H3M9 20C9 20.5523 8.55228 21 8 21C7.44772 21 7 20.5523 7 20C7 19.4477 7.44772 19 8 19C8.55228 19 9 19.4477 9 20ZM20 20C20 20.5523 19.5523 21 19 21C18.4477 21 18 20.5523 18 20C18 19.4477 18.4477 19 19 19C19.5523 19 20 19.4477 20 20Z"
+                      stroke="#000000"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    ></path>
+                  </g>
+                </svg>
+              )
+            ) : (
+              "select size"
+            )}
           </button>
         )}
 

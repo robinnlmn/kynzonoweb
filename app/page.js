@@ -65,8 +65,10 @@ export default function Home() {
         value = value.substring(1);
       }
 
-      if (value) {
-        setCurrentCollection(parseInt(value));
+      if (value == "0") {
+        setCurrentCollection(0);
+      } else if (value == "1") {
+        setCurrentCollection(1);
       } else {
         setCurrentCollection(100);
       }
